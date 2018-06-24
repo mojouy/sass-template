@@ -1,0 +1,125 @@
+
+// -----------  MIXINS ---------- //
+
+@mixin theme-background {
+  background: linear-gradient(-22deg, $c-primary-lighter 30%, $c-primary 100%);
+}
+
+@mixin link-with-logo {
+  background-image: url('#{$path-logo-svg}');
+  background-repeat: no-repeat;
+  background-size: contain;
+  color: transparent;
+  display: inline-block;
+  font-size: 20px;
+  height: 80px;
+
+  &:link,
+  &:visited { color: transparent; }
+}
+
+@mixin remove-button-appearance {
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  cursor: $global-button-cursor;
+  margin: 0;
+  padding: 0;
+  transition: none;
+}
+
+@mixin text-button {
+  @include remove-button-appearance;
+
+  color: $c-primary;
+  font-size: $global-font-size;
+
+  &:hover { cursor: pointer; }
+}
+
+@mixin cart-button {
+  @include remove-button-appearance;
+
+  background: $c-primary;
+  border-radius: 6px;
+  color: $c-secondary;
+  font-size: $global-font-size;
+  padding: $vertical-rythm-spacing-text;
+
+  &:hover { cursor: pointer; }
+
+  &:hover,
+  &:focus { background: $c-primary-lighter; }
+}
+
+@function strip-unit($num) {
+  @return $num / ($num * 0 + 1);
+}
+
+@function val-to-rem($value, $base: null) {
+  // Check if the value is a number
+  @if type-of($value) != 'number' {
+    @warn inspect($value) + ' was passed to rem-calc(), which is not a number.';
+
+    @return $value;
+  }
+
+  // Transform em into rem if someone hands over 'em's
+  @if unit($value) == 'em' {
+    $value: strip-unit($value) * 1rem;
+  }
+
+  // Calculate rem if units for $value is not rem or em
+  @if unit($value) != 'rem' {
+    $value: strip-unit($value) / strip-unit($base) * 1rem;
+  }
+
+  // Turn 0rem into 0
+  @if $value == 0rem { /* stylelint-disable-line length-zero-no-unit */
+    $value: 0;
+  }
+
+  @return $value;
+}
+
+@function rem-calc($values, $base: null) {
+  $rem-values: ();
+  $count: length($values);
+
+  // If no base is defined, defer to the global font size
+  @if $base == null {
+    $base: $global-font-size;
+  }
+
+  // If the base font size is a %, then multiply it by 16px
+  // This is because 100% font size = 16px in most all browsers
+  @if unit($base) == '%' {
+    $base: ($base / 100%) * 16px;
+  }
+
+  @if unit($base) == 'rem' {
+    $base: strip-unit($base) * 16px;
+  }
+
+  @if $count == 1 {
+    @return val-to-rem($values, $base);
+  }
+
+  @for $i from 1 through $count {
+    $rem-values: append($rem-values, val-to-rem(nth($values, $i), $base));
+  }
+
+  @return $rem-values;
+}
+
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: #{map-get($breakpoints, $breakpoint)}) { @content; }
+  }
+
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+      + "Please make sure it is defined in `$breakpoints` map.";
+  }
+}

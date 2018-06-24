@@ -1,0 +1,104 @@
+
+// -----------  VARIABLES ---------- //
+
+$global-font-size: 100% !default;
+$global-width: 1180px !default;
+
+// -- Colors
+$c-primary: #311b92;
+$c-primary-lighter: lighten($c-primary, 30%);
+$c-secondary: #fff;
+$c-secondary-dark: darken($c-secondary, 3%);
+$c-secondary-darker: darken($c-secondary, 20%);
+$black: #232323 !default;
+
+$body-font-color: $black !default;
+
+/// Font stack of the body.
+$body-font-family: 'Open Sans', Helvetica, Arial, sans-serif !default;
+$body-antialiased: true !default;
+
+// -- Font weights
+$global-weight-normal: 400 !default;
+$global-weight-bold: 700 !default;
+$global-lineheight: 1.5;
+
+$screen: "only screen" !default;
+
+$breakpoints: (
+  small: 0,
+  large: 1180px
+) !default;
+
+$small-only: "#{$screen} and (max-width: #{map-get($breakpoints, large) - 1})" !default;
+
+// -- Paths
+//  considering that the entry point is styles.scss
+$path-theme-dir: 'themes/netcentric/images';
+$path-image-title-small: '#{$path-theme-dir}/title.small.png';
+$path-image-title-small-2x: '#{$path-theme-dir}/title.small.2x.png';
+$path-image-title-large: '#{$path-theme-dir}/title.large.png';
+$path-image-title-large-2x: '#{$path-theme-dir}/title.large.2x.png';
+$path-logo-svg: '#{$path-theme-dir}/logo.svg';
+
+// -- horizontal rhytm
+$horizontal-rythm-spacing-text: 10px;
+
+// -- vertical rhytm
+$vertical-rythm-spacing-component: 30px;
+$vertical-rythm-spacing-text: 10px;
+
+// - Font sizes
+$font-size-small: 14px;
+$font-size-headline-primary: 30px;
+$font-size-headline-primary-large: 42px;
+$font-size-headline-component: $font-size-headline-primary;
+$font-size-headline-component-large: 35px;
+$font-size-table-header: 25px;
+$font-size-final-output: 22px;
+
+// - Headers
+$header-font-family: $body-font-family !default;
+$header-font-weight: $global-weight-bold !default;
+$header-font-style: normal !default;
+$header-color: $c-primary !default;
+$header-lineheight: 1.3 !default;
+$header-margin-bottom: $vertical-rythm-spacing-text !default;
+
+$header-styles: (
+  'h1': $font-size-headline-primary-large,
+  'h2': $font-size-headline-component-large,
+  'h3': $font-size-table-header,
+  'h4': $font-size-final-output
+) !default;
+
+$header-styles-small: (
+  'h1': $font-size-headline-primary,
+  'h2': $font-size-headline-component,
+  'h3': $font-size-table-header,
+  'h4': $font-size-final-output
+) !default;
+
+// - Paragraphs
+$paragraph-lineheight: 1.6 !default;
+$paragraph-margin-bottom: $vertical-rythm-spacing-text !default;
+
+// - Anchors
+$global-button-cursor: auto !default;
+$anchor-color: $c-primary !default;
+$anchor-color-hover: scale-color($anchor-color, $lightness: 25%) !default;
+$anchor-text-decoration: underline !default;
+$anchor-text-decoration-hover: none !default;
+
+// - List
+$list-lineheight: $paragraph-lineheight !default;
+$list-margin-bottom: $paragraph-margin-bottom !default;
+$list-style-type: none !default;
+$list-style-position: outside !default;
+
+// Transition timings
+$transition-fast: .25s;
+$transition-in-out: ease-in-out;
+$transition-in: ease-in;
+$transition-out: ease-out;
+$transition-default: $transition-fast $transition-in-out;

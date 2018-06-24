@@ -1,0 +1,132 @@
+
+// -----------  BASE STYLES ---------- //
+
+// Universal Box Sizing with Inheritance
+*,
+*::before,
+*::after { box-sizing: inherit; }
+
+html {
+  box-sizing: border-box;
+  font-size: $global-font-size;
+  text-size-adjust: 100%;
+  width: 100vw;
+}
+
+body {
+  color: $body-font-color;
+  font-family: $body-font-family;
+  font-weight: $global-weight-normal;
+  line-height: $global-lineheight;
+  margin: 0;
+  padding: 0;
+
+  @if ($body-antialiased) {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+button,
+input,
+optgroup,
+select,
+textarea { font-family: inherit; }
+
+// Typography resets
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+// Paragraphs
+p {
+  color: $black;
+  font-size: inherit;
+  line-height: $global-lineheight;
+  margin-bottom: $vertical-rythm-spacing-text;
+}
+
+// Headings
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $header-color;
+  font-family: $header-font-family;
+  font-style: $header-font-style;
+  font-weight: $header-font-weight;
+  margin-bottom: $header-margin-bottom;
+}
+
+//Iterate through Headings and deal with Media Queries
+
+@for $i from 1 through 6 {
+  h#{$i} {
+    $font-large: map-get($header-styles, h#{$i});
+    $font-small: map-get($header-styles-small, h#{$i});
+
+    font-size: $font-large;
+
+    @media #{$small-only} { font-size: $font-small; }
+  }
+}
+
+// Links
+a {
+  color: $anchor-color;
+  cursor: pointer;
+  line-height: inherit;
+  text-decoration: $anchor-text-decoration;
+
+  &:hover,
+  &:focus {
+    color: $anchor-color-hover;
+
+    @if $anchor-text-decoration-hover != $anchor-text-decoration {
+      text-decoration: $anchor-text-decoration-hover;
+    }
+  }
+}
+
+// Lists
+ul,
+ol { margin-bottom: $list-margin-bottom; }
+
+// List items
+li { font-size: inherit; }
+ul { list-style-type: $list-style-type; }
+
+.container {
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: $global-width;
+  padding: 0 $horizontal-rythm-spacing-text;
+}
+
+.is-hidden { display: none; }
+
+// Hide only visually, but have it available for screenreaders: h5bp.com/v
+.is-visually-hidden {
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute;
+
+  // Extends the .visuallyhidden class to allow the element to be focusable
+  // when navigated to via the keyboard: h5bp.com/p
+  &.is-focusable:focus {
+    clip: auto;
+    position: static;
+  }
+}
