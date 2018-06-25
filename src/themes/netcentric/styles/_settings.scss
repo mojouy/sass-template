@@ -23,14 +23,10 @@ $global-weight-normal: 400 !default;
 $global-weight-bold: 700 !default;
 $global-lineheight: 1.5;
 
-$screen: "only screen" !default;
-
 $breakpoints: (
   small: 0,
-  large: 1180px
-) !default;
-
-$small-only: "#{$screen} and (max-width: #{map-get($breakpoints, large) - 1})" !default;
+  large: 800px
+);
 
 // -- Paths
 //  considering that the entry point is styles.scss

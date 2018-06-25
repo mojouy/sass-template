@@ -1,0 +1,17 @@
+
+// -----------  HEADER ---------- //
+
+header {
+  @include theme-background($path-image-title-large);
+
+  height: rem-calc(350);
+
+  @include media('<large') {
+    @include theme-background($path-image-title-small);
+
+    height: rem-calc(280);
+  }//small devices
+
+  @include media('<large', 'retina2x') { @include theme-background($path-image-title-small-2x); }
+  @include media('>large', 'retina2x') { @include theme-background($path-image-title-large-2x); }
+}//header

@@ -79,7 +79,7 @@ h6 {
 
     font-size: $font-large;
 
-    @media #{$small-only} { font-size: $font-small; }
+    @include media("<large") { font-size: $font-small; }
   }
 }
 
