@@ -27,7 +27,7 @@
         "watch:css": "npm run css && onchange \"src/**/*.scss\" -- npm-run-all css",
         "watch:lint": "npm run lint && onchange \"src/**/*.{scss|html|js}\" -- npm run lint",
         "watch:html": "onchange 'src/**/*.html' -- npm run copy:html",
-        "watch:js": "watchify src/main.js -t babelify -o dist/main.js",
+        "watch:js": "watchify src/main.js -t babelify -o 'uglifyjs -cm > dist/main.js'",
         "watch:test": "npm run test -- --watch",
         "watch": "npm run build && run-p watch:* serve"
     },

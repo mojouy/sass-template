@@ -6,7 +6,7 @@ export default class ShoppingcartModel {
   }
 
   init() {
-    return 90;
+    return 99;
   }
 }
 
