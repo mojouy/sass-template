@@ -14,7 +14,7 @@
         "copy:assets": "find src/themes/netcentric/images -name '*' -type f -exec cp {} dist/themes/netcentric/images \\;",
         "copy:html": "find src -name '*.html' -type f -exec cp {} dist \\;",
         "kill": "lsof -n -i:8080 | grep LISTEN | awk '{print $2}' | xargs kill -9",
-        "serve": "browser-sync start -s --files 'dist/**/*.(js|css|html)' --ss 'dist' --port 8080 --reload-debounce 500",
+        "serve": "browser-sync start -s --files 'dist/**/*.(js|css|html)' --ss 'dist' --port 8080 --reload-debounce 1000",
         "css": "npm-run-all css:precompile css:autoprefix",
         "css:autoprefix": "postcss --use autoprefixer --replace dist/styles.css",
         "css:precompile": "node-sass --include-path src/libs-polyfills --output-style compressed --output dist src/styles.scss",
@@ -27,7 +27,7 @@
         "watch:css": "npm run css && onchange \"src/**/*.scss\" -- npm-run-all css",
         "watch:lint": "npm run lint && onchange \"src/**/*.{scss|html|js}\" -- npm run lint",
         "watch:html": "onchange 'src/**/*.html' -- npm run copy:html",
-        "watch:js": "onchange 'src/main.js' -- npm run js:dev",
+        "watch:js": "watchify src/main.js -t babelify -o dist/main.js",
         "watch:test": "npm run test -- --watch",
         "watch": "npm run build && run-p watch:* serve"
     },
@@ -38,7 +38,17 @@
         ]
     },
     "browserify": {
-      "transform": [["babelify", { "presets": ["babel-preset-env", "babel-preset-stage-2"] }]]
+        "transform": [
+            [
+                "babelify",
+                {
+                    "presets": [
+                        "babel-preset-env",
+                        "babel-preset-stage-2"
+                    ]
+                }
+            ]
+        ]
     },
     "devDependencies": {
         "autoprefixer": "^8.0.0",
@@ -65,6 +75,7 @@
     "dependencies": {
         "babel-preset-env": "^1.7.0",
         "babel-preset-stage-2": "^6.24.1",
-        "browserify": "^16.2.2"
+        "browserify": "^16.2.2",
+        "watchify": "^3.11.0"
     }
 }

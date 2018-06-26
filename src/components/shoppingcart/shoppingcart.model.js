@@ -1,41 +1,54 @@
-/* eslint-disable */
-(function() {
-  var MODULE_NAME = 'shoppingcartModel',
-    NETCENTRIC_NAMESPACE = 'nn';
+'use strict';
 
-  window[NETCENTRIC_NAMESPACE] = window[NETCENTRIC_NAMESPACE] || {};
+export default class ShoppingcartModel {
+  constructor() {
+    this.constructor = this;
+  }
 
-  window[NETCENTRIC_NAMESPACE][MODULE_NAME] = function() {
-    _getCart = function() {
-      return {
-        total: {
-          beforeVAT: 0,
-          afterVAT: 0,
-          VAT: 0
-        },
-        products: [],
-        VATRate: null
-      };
-    };
+  init() {
+    return 90;
+  }
+}
 
-    return {
-      init: function() {},
-
-      getCart: _getCart,
-
-      addProducts: function(newOrExistingProducts) {
-        return _getCart();
-      },
-
-      changeProductQuantity: function(product, newQuantity) {
-        return _getCart();
-      },
-
-      removeProducts: function(productsToDelete) {
-        return _getCart();
-      },
-
-      destroy: function() {},
-    };
-  };
-})();
+// function shoppingcartModel() {
+//   var MODULE_NAME = 'shoppingcartModel',
+//       NETCENTRIC_NAMESPACE = 'nn';
+//
+//   window[NETCENTRIC_NAMESPACE] = window[NETCENTRIC_NAMESPACE] || {};
+//
+//   window[NETCENTRIC_NAMESPACE][MODULE_NAME] = function () {
+//     this._getCart = function _getCart() {
+//       return {
+//         total: {
+//           beforeVAT: 0,
+//           afterVAT: 0,
+//           VAT: 0
+//         },
+//         products: [],
+//         VATRate: null
+//       };
+//     };
+//
+//     return {
+//       init: function init() {
+//         return this._getCart();
+//       },
+//
+//       getCart: this._getCart,
+//
+//       addProducts: function addProducts(newOrExistingProducts) {
+//         return this.getCart( console.log("ss"));
+//       },
+//
+//       changeProductQuantity: function changeProductQuantity(product, newQuantity) {
+//         return _getCart();
+//       },
+//
+//       removeProducts: function removeProducts(productsToDelete) {
+//         return _getCart();
+//       },
+//
+//       destroy: function destroy() {}
+//     };
+//   };
+// };

@@ -1,2 +1,2 @@
-import foo from './components/shoppingcart/shoppingcart';
-console.log(foo); // eslint-disable-line no-console
+import { initShoppingCart } from './components/shoppingcart/shoppingcart';
+initShoppingCart();//
