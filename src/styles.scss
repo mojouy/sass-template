@@ -2,4 +2,9 @@
 
 @import './node_modules/include-media/dist/include-media';
 @import 'themes/netcentric/styles/theme';
+@import 'components/page/index';
 @import 'components/header/index';
+@import 'components/breadcrumbs/index';
+@import 'components/shop/index';
+@import 'components/shoppingcart/index';
+@import 'components/footer/index';

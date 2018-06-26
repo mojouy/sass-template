@@ -8,143 +8,170 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <a href="http://netcentric.biz">
-    Link to Netcentric Website
+  <header class="header">
+    <a class="header__logo" href="http://netcentric.biz">
+      Link to Netcentric Website
     </a>
-    <h1>
+    <h1 class="header__title">
       Netcentric. Expect sailing trips as well!
     </h1>
   </header><!-- section header -->
 
-  <div class="container">
-    <ul>
-      <li><a href="http://netcentric.biz">Home</a></li>
-      <li>Shopping for the annual sailing trip</li>
+  <div class="site-container">
+    <ul class="breadcrumbs">
+      <li class="breadcrumbs__item"><a href="http://netcentric.biz">Home</a></li>
+      <li class="breadcrumbs__item">Shopping for the annual sailing trip</li>
     </ul>
-  </div><!-- Site container -->
 
-  <div>
-    <div>
+    <section class="shop">
       <h2>The Shop</h2>
       <p>Ahoy landman! Pick what you need for the big trip. You gonna be out there some days, so better leave prepared.</p>
       <p><strong>Please note: All prices are without <abbr title="Value Added Tax">VAT</abbr>!</strong></p>
-      <ol>
-        <li>
-          <div>
-            <h3>Towel</h3>
+
+      <ol class="shop__list">
+        <li class="shop__item">
+          <div class="shop__item_info">
+            <h5>Towel</h5>
             <p>Sunny days and warm weather - you clearly need it after a refreshing jump into the cool sea.</p>
-          </div>
-          <div>
-            <p>&euro;10</p>
-            <button data-shop-listing='{"name": "Towel", "description": "Sunny days and warm weather - you clearly need it after a refreshing jump into the cool sea.", "price": 10.00}'>Add to cart</button>
-          </div>
-        </li>
-        <li>
-          <div>
-            <h3>Enlightening book</h3>
+          </div><!-- Shop Item Info -->
+          <div class="shop__item_footer">
+            <button
+              data-shop-listing='{
+                "name": "Towel",
+                "description": "Sunny days and warm weather - you clearly need it after a refreshing jump into the cool sea.", "price": 10.00}'
+            >
+              Add to cart
+            </button>
+            <span class="shop__item_price">&euro;10</span>
+          </div><!-- Shop Item Footer -->
+        </li><!-- Shop Item -->
+
+        <li class="shop__item">
+          <div class="shop__item_info">
+            <h5>Enlightening book</h5>
             <p>There&rsquo;s no rush out there. Take your time for a good read.</p>
-          </div>
-          <div>
-            <p>&euro;5.99</p>
-            <button data-shop-listing='{"name": "Enlightening book", "description": "There&rsquo;s no rush out there. Take your time for a good read.", "price": 5.99}'>Add to cart</button>
-          </div>
-        </li>
-        <li>
-          <div>
-            <h3>Waterproof camera</h3>
+          </div><!-- Shop Item Info -->
+          <div class="shop__item_footer">
+            <button
+              data-shop-listing='{
+                "name": "Enlightening book",
+                "description": "There&rsquo;s no rush out there. Take your time for a good read.", "price": 5.99}'
+            >
+              Add to cart
+            </button>
+            <span class="shop__item_price">&euro;5.99</span>
+          </div><!-- Shop Item Footer -->
+        </li><!-- Shop Item -->
+
+        <li class="shop__item">
+          <div class="shop__item_info">
+            <h5>Waterproof camera</h5>
             <p>Below the sea&rsquo;s surface, a hidden world. Don't miss out to bring those memories back home.</p>
-          </div>
-          <div>
-            <p>&euro;49.99</p>
-            <button data-shop-listing='{"name": "Waterproof camera", "description": "Below the sea&rsquo;s surface, a hidden world. Do not miss out to bring those memories back home.", "price": 49.99}'>Add to cart</button>
-          </div>
-        </li>
-        <li>
-          <div>
-            <h3>Pinwheel</h3>
+          </div><!-- Shop Item Info -->
+          <div class="shop__item_footer">
+            <button
+              data-shop-listing='{
+                "name": "Waterproof camera",
+                "description": "Below the sea&rsquo;s surface, a hidden world. Do not miss out to bring those memories back home.", "price": 49.99}'
+            >
+              Add to cart
+            </button>
+            <span class="shop__item_price">&euro;49.99</span>
+          </div><!-- Shop Item Footer -->
+        </li><!-- Shop Item -->
+
+        <li class="shop__item">
+          <div class="shop__item_info">
+            <h5>Pinwheel</h5>
             <p>Wondering what to do when there's only a light breeze? Back to your childhood!</p>
-          </div>
-          <div>
-            <p>&euro;2.50</p>
-            <button data-shop-listing='{"name": "Pinwheel", "description": "Wondering what to do with only a light breeze? Back to your childhood!", "price": 2.50}'>Add to cart</button>
-          </div>
-        </li>
-      </ol>
-    </div>
-    <div>
+          </div><!-- Shop Item Info -->
+          <div class="shop__item_footer">
+            <button
+              data-shop-listing='{
+                "name": "Pinwheel",
+                "description": "Wondering what to do with only a light breeze? Back to your childhood!", "price": 2.50}'
+            >
+              Add to cart
+            </button>
+            <span class="shop__item_price">&euro;2.50</span>
+          </div><!-- Shop Item Footer -->
+        </li><!-- Shop Item -->
+      </ol><!-- Shop List -->
+    </section><!-- Shop Section -->
+
+    <section class="shoppingcart">
       <h2>Your boat's shopping cart</h2>
       <p>&hellip;is empty.</p>
       <form id="shoppingcart-form">
-        <table>
+        <table class="shoppingcart__table">
           <thead>
             <tr>
-              <th>Product</th>
-              <th>Price</th>
-              <th>Quantity</th>
+              <th class="shoppingcart__title">Product</th>
+              <th class="shoppingcart__title">Price</th>
+              <th class="shoppingcart__title">Quantity</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>
-                <h3>PLACEHOLDER</h3>
-                <p>PLACEHOLDER</p>
-                <div>
-                  <button>Remove</button>
-                </div>
+            <tr class="shoppingcart__row">
+              <td class="shoppingcart__item_info">
+                <h5>Pinwheel</h5>
+                <p>Wondering what to do when there's only a light breeze? Back to your childhood!</p>
+                <button class="shoppingcart__item_remove">Remove</button>
               </td>
-              <td>
-                <output></output>
+              <td class="shoppingcart__item_price">
+                <output>&euro;5.99</output>
               </td>
-              <td>
+              <td class="shoppingcart__item_actions">
                 <input type="number" min="1" value="1">
-                <span>
-                <button type="button" title="decrease">
-                -
-                </button>
-                <button type="button" title="step up">
-                +
-                </button>
+                <span class="controls">
+                  <button type="button" title="decrease">-</button>
+                  <button type="button" title="step up">+</button>
                 </span>
               </td>
-            </tr>
+            </tr><!-- ShoppingCart Item -->
           </tbody>
+
           <tfoot>
-            <tr>
-              <td colspan="3">
+            <tr class="shoppingcart__row shoppingcart__taxes">
+              <td class="shoppingcart__taxes_list" colspan="3">
                 <ol>
                   <li>
                     <label>Price before <abbr title="Value Added Tax">VAT</abbr>:</label>
-                    <output></output>
+                    <output><b>&euro;5.99</b></output>
                   </li>
                   <li>
                     <label><abbr title="Value Added Tax">VAT</abbr> @ <strong></strong>%:</label>
-                    <output></output>
+                    <output><b>&euro;5.99</b></output>
                   </li>
-                  <li>
+                  <li class="shoppingcart__total">
                     <label>Total to be paid:</label>
-                    <output></output>
+                    <output><b>&euro;5.99</b></output>
                   </li>
                 </ol>
-              </td>
-            </tr>
-          </tfoot>
+              </td><!-- Taxes List -->
+            </tr><!-- ShoppingCart Taxes -->
+          </tfoot><!-- Table Footer -->
         </table>
-        <div>
+        <div class="shoppingcart__footer">
           <p>
             <em>Free shipping! We will fly your order to your boat with one of our Netcentric drones the moment you click that checkout button!</em>
           </p>
-          <a href="#">Continue shopping</a> <em>or</em> <button type="submit" form="shoppingcart-form">Proceed to Checkout</button>
+          <a href="#">Continue shopping</a>
+          <em>or</em>
+          <button class="btn" type="submit" form="shoppingcart-form">Proceed to Checkout</button>
         </div>
       </form>
+    </section><!-- Shopping Cart -->
+  </div><!-- Site container -->
+
+  <footer class="footer">
+    <div class="container">
+      <a class="footer__logo" href="http://netcentric.biz">
+      Link to Netcentric Website
+      </a>
+      &copy; 2018
     </div>
-  </div>
-  <div>
-    <a href="http://netcentric.biz">
-    Link to Netcentric Website
-    </a>
-    &copy; 2018
-  </div>
+  </footer>
   <script src="main.js"></script>
 </body>
 </html>

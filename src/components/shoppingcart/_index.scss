@@ -1,0 +1,102 @@
+
+// -----------  SHOPPING CART ---------- //
+
+.shoppingcart {
+  background-color: $c-secondary-dark;
+  padding: 20px;
+  width: 100%;
+
+  @include media('>large') {
+    width: calc(45% - #{$vertical-rythm-spacing-component / 2});
+  }
+
+  &__table {
+    border-collapse: collapse;
+
+    thead { border-bottom: 1px dashed $c-secondary-darker; }
+  }//table
+
+  &__row { border-bottom: 1px solid $c-secondary-darker; }
+
+  &__title {
+    color: $c-primary;
+    font-size: rem-calc($font-size-table-header);
+    font-weight: $global-weight-normal;
+    text-align: left;
+  }//Table titles
+
+  &__item_price { font-weight: $global-weight-bold; }
+
+  &__item_info {
+    h5 {
+      color: $body-font-color;
+      font-weight: $global-weight-bold;
+    }
+  }//Item info
+
+  &__item_actions {
+    $items-spacing: 5px;
+
+    display: flex;
+    justify-content: space-between;
+
+    input,
+    button { display: inherit; }
+
+    input {
+      margin-right: $items-spacing;
+      width: 40%;
+    }
+
+    button { @include cart-button; }
+    button:first-child { margin-right: $items-spacing; }
+
+    .controls {
+      display: flex;
+      justify-content: space-around;
+    }
+  }//Item actions
+
+  &__taxes {
+    border-bottom-style: dashed;
+
+    ol { margin: 0; }
+
+    output {
+      display: inline-block;
+      min-width: 75px;
+    }
+  }//taxes section
+
+  &__item_info,
+  &__item_price,
+  &__item_actions,
+  &__taxes_list,
+  &__title {
+    padding: $horizontal-rythm-spacing-text;
+    vertical-align: top;
+
+    &:first-of-type { padding-left: 0; }
+
+    &:last-of-type {
+      padding-right: 0;
+      text-align: right;
+    }
+  }//item info and title (td th)
+
+  &__item_remove { @include text-button; }
+
+  &__total {
+    border-top: 1px solid $c-secondary-darker;
+    margin-top: 10px;
+    padding-top: 10px;
+  }//tital price
+
+  &__footer {
+    margin: $vertical-rythm-spacing-text 0;
+    text-align: right;
+
+    p { text-align: left; }
+    .btn { @include cart-button; }
+  }
+}//Shop section

@@ -11,6 +11,7 @@ $c-secondary: #fff;
 $c-secondary-dark: darken($c-secondary, 3%);
 $c-secondary-darker: darken($c-secondary, 20%);
 $black: #232323 !default;
+$brand-gradient: linear-gradient(-22deg, $c-primary-lighter 30%, $c-primary 100%);
 
 $body-font-color: $black !default;
 
@@ -46,6 +47,7 @@ $vertical-rythm-spacing-text: 10px;
 
 // - Font sizes
 $font-size-small: 14px;
+$body-font-size: 16px;
 $font-size-headline-primary: 30px;
 $font-size-headline-primary-large: 42px;
 $font-size-headline-component: $font-size-headline-primary;
@@ -55,7 +57,7 @@ $font-size-final-output: 22px;
 
 // - Headers
 $header-font-family: $body-font-family !default;
-$header-font-weight: $global-weight-bold !default;
+$header-font-weight: $global-weight-normal !default;
 $header-font-style: normal !default;
 $header-color: $c-primary !default;
 $header-lineheight: 1.3 !default;
@@ -65,14 +67,16 @@ $header-styles: (
   'h1': $font-size-headline-primary-large,
   'h2': $font-size-headline-component-large,
   'h3': $font-size-table-header,
-  'h4': $font-size-final-output
+  'h4': $font-size-final-output,
+  'h5': $body-font-size
 ) !default;
 
 $header-styles-small: (
   'h1': $font-size-headline-primary,
   'h2': $font-size-headline-component,
   'h3': $font-size-table-header,
-  'h4': $font-size-final-output
+  'h4': $font-size-final-output,
+  'h5': $body-font-size
 ) !default;
 
 // - Paragraphs

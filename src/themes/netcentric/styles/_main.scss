@@ -56,6 +56,13 @@ p {
   margin-bottom: $vertical-rythm-spacing-text;
 }
 
+// Strong text
+strong,
+b {
+  font-weight: $global-weight-bold;
+  line-height: inherit;
+}
+
 // Headings
 h1,
 h2,
@@ -72,14 +79,14 @@ h6 {
 
 //Iterate through Headings and deal with Media Queries
 
-@for $i from 1 through 6 {
+@for $i from 1 through 5 {
   h#{$i} {
     $font-large: map-get($header-styles, h#{$i});
     $font-small: map-get($header-styles-small, h#{$i});
 
-    font-size: $font-large;
+    font-size: rem-calc($font-large);
 
-    @include media("<large") { font-size: $font-small; }
+    @include media("<large") { font-size: rem-calc($font-small); }
   }
 }
 
@@ -102,19 +109,13 @@ a {
 
 // Lists
 ul,
-ol { margin-bottom: $list-margin-bottom; }
+ol {
+  list-style-type: $list-style-type;
+  margin-bottom: $list-margin-bottom;
+}
 
 // List items
 li { font-size: inherit; }
-ul { list-style-type: $list-style-type; }
-
-.container {
-  box-sizing: border-box;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: $global-width;
-  padding: 0 $horizontal-rythm-spacing-text;
-}
 
 .is-hidden { display: none; }
 
