@@ -1,3 +1,4 @@
+import _ from 'lodash';
 // 'use strict';
 // A different Approach using ES6 (didn't continue since wont work with current tests)
 //
@@ -19,16 +20,17 @@
 
   window[NETCENTRIC_NAMESPACE][MODULE_NAME] = function() {
     const _VATRate = 20;
+    let storeCart = {
+      products: [],
+      total: {
+        beforeVAT: 0,
+        afterVAT: 0,
+        VAT: 0
+      }
+    };
 
     const _getCart = function() {
-      return {
-        products: [],
-        total: {
-          beforeVAT: 0,
-          afterVAT: 0,
-          VAT: 0
-        }
-      };
+      return storeCart;
     };
 
     const _getProductBeforeVAT = function(product) {
@@ -43,11 +45,18 @@
       return beforeVAT + VAT;
     }
 
-    function _calculateTotals(product, total) {
-      let { beforeVAT, afterVAT } = total;
-      beforeVAT = _getProductBeforeVAT(product);
-      let VAT = _getVAT(beforeVAT, _VATRate);
-      afterVAT = _getAfterVAT(product.price, VAT);
+    function _calculateTotals(product) {
+      let { beforeVAT, afterVAT, VAT } = storeCart.total;
+      const { quantity } = product;
+      if (quantity > 1) {
+        beforeVAT = _getProductBeforeVAT(product) * quantity;
+        VAT = _getVAT(beforeVAT, _VATRate);
+        afterVAT = _getAfterVAT(product.price * quantity, VAT);
+      } else {
+        beforeVAT = _getProductBeforeVAT(product);
+        VAT = _getVAT(beforeVAT, _VATRate);
+        afterVAT = _getAfterVAT(product.price, VAT);
+      }
 
       return  {
         beforeVAT,
@@ -56,26 +65,50 @@
       };
     }//Calculate Totals (beforeVAT afterVAT VAT)
 
+    function _isProductInCart(product) {
+      return _.filter(storeCart.products, p => p.name === product.name).length > 0;
+    }
+
+    function _shapeCart(product) {
+      let newCart = {...storeCart};
+      let { products, total } = newCart;
+      if (_isProductInCart(product)) {
+        const quantity = _.filter(products, p => p.name === product.name).length + 1;
+        products = [Object.assign(product, {quantity})];
+        total = _calculateTotals(product);
+      } else {
+        products = [...products, product];
+        total = _calculateTotals(product);
+      }
+
+      storeCart = Object.assign(storeCart, {products}, {total});
+    }
+
     return {
       init: function() {
-        return 99;
+        return _getCart();
       },
 
       getCart: _getCart,
 
       addProducts: function(newOrExistingProducts) {
-        let cart = _getCart();
-        let { products, total} = cart;
+        let newCart = {};
 
-        cart.total = _calculateTotals(newOrExistingProducts, total);
-        console.log(//eslint-disable-line no-console
-          products.filter(
-            product => product.name !== newOrExistingProducts.name));
-        products.push(newOrExistingProducts);
-        return cart;
+        if (Array.isArray(newOrExistingProducts)) {
+          newOrExistingProducts.map((product) => {
+            newCart = Object.assign(newCart, _shapeCart(product));
+          });
+        } else {
+          newCart = Object.assign(newCart, _shapeCart(newOrExistingProducts));
+        }
+        return _getCart();
       },
 
       changeProductQuantity: function() { //product, newQuantity
+        console.log('change quantity')//eslint-disable-line no-console
+        // const cartWithoutProduct =
+        //_.filter(products, p => p.name !== newOrExistingProducts.name);
+        // newProducts = [...cartWithoutProduct, newOrExistingProducts];
         return _getCart();
       },
 
