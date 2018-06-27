@@ -49,7 +49,7 @@ import _ from 'lodash';
       let { beforeVAT, afterVAT, VAT } = storeCart.total;
       const { quantity } = product;
       if (quantity > 1) {
-        beforeVAT = _getProductBeforeVAT(product) * quantity;
+        beforeVAT = beforeVAT + _getProductBeforeVAT(product);
         VAT = _getVAT(beforeVAT, _VATRate);
         afterVAT = _getAfterVAT(product.price * quantity, VAT);
       } else {
