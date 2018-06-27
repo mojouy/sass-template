@@ -89,6 +89,10 @@ import _ from 'lodash';
         return _getCart();
       },
 
+      getVATRate: function() {
+        return _VATRate;
+      },
+
       getCart: _getCart,
 
       addProducts: function(newOrExistingProducts) {

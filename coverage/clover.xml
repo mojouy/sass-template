@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1530074946329" clover="3.2.0">
-  <project timestamp="1530074946329" name="All files">
-    <metrics statements="46" coveredstatements="42" conditionals="8" coveredconditionals="8" methods="17" coveredmethods="14" elements="71" coveredelements="64" complexity="0" loc="46" ncloc="46" packages="1" files="1" classes="1">
+<coverage generated="1530077811582" clover="3.2.0">
+  <project timestamp="1530077811582" name="All files">
+    <metrics statements="47" coveredstatements="42" conditionals="8" coveredconditionals="8" methods="18" coveredmethods="14" elements="73" coveredelements="64" complexity="0" loc="47" ncloc="47" packages="1" files="1" classes="1">
       <file name="shoppingcart.model.js" path="/Users/santiagomollajoli/Sites/frontend-hero-test-v1.2.4/src/components/shoppingcart/shoppingcart.model.js">
-        <metrics statements="46" coveredstatements="42" conditionals="8" coveredconditionals="8" methods="17" coveredmethods="14"/>
+        <metrics statements="47" coveredstatements="42" conditionals="8" coveredconditionals="8" methods="18" coveredmethods="14"/>
         <line num="15" count="1" type="stmt"/>
         <line num="16" count="1" type="stmt"/>
         <line num="17" count="1" type="stmt"/>
@@ -39,17 +39,18 @@
         <line num="84" count="14" type="stmt"/>
         <line num="87" count="10" type="stmt"/>
         <line num="89" count="10" type="stmt"/>
-        <line num="95" count="9" type="stmt"/>
-        <line num="97" count="9" type="cond" truecount="2" falsecount="0"/>
-        <line num="98" count="5" type="stmt"/>
-        <line num="99" count="10" type="stmt"/>
-        <line num="102" count="4" type="stmt"/>
-        <line num="104" count="9" type="stmt"/>
-        <line num="108" count="0" type="stmt"/>
+        <line num="93" count="0" type="stmt"/>
+        <line num="99" count="9" type="stmt"/>
+        <line num="101" count="9" type="cond" truecount="2" falsecount="0"/>
+        <line num="102" count="5" type="stmt"/>
+        <line num="103" count="10" type="stmt"/>
+        <line num="106" count="4" type="stmt"/>
+        <line num="108" count="9" type="stmt"/>
         <line num="112" count="0" type="stmt"/>
         <line num="116" count="0" type="stmt"/>
         <line num="120" count="0" type="stmt"/>
-        <line num="125" count="1" type="stmt"/>
+        <line num="124" count="0" type="stmt"/>
+        <line num="129" count="1" type="stmt"/>
       </file>
     </metrics>
   </project>
