@@ -7,7 +7,7 @@
     "private": true,
     "scripts": {
         "postinstall": "npm run build",
-        "build": "npm-run-all lint clean mkdirs copy:* css js:dev",
+        "build": "npm-run-all lint clean mkdirs copy:* css js:dev test",
         "clean": "rimraf dist",
         "mkdirs": "mkdir -p dist && mkdir -p dist/themes/netcentric/images",
         "js:dev": "browserify src/main.js > dist/main.js",
@@ -74,6 +74,7 @@
         "babel-preset-env": "^1.7.0",
         "babel-preset-stage-2": "^6.24.1",
         "browserify": "^16.2.2",
+        "jquery": "^3.3.1",
         "watchify": "^3.11.0"
     }
 }

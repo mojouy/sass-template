@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1530072100425" clover="3.2.0">
-  <project timestamp="1530072100425" name="All files">
+<coverage generated="1530074946329" clover="3.2.0">
+  <project timestamp="1530074946329" name="All files">
     <metrics statements="46" coveredstatements="42" conditionals="8" coveredconditionals="8" methods="17" coveredmethods="14" elements="71" coveredelements="64" complexity="0" loc="46" ncloc="46" packages="1" files="1" classes="1">
       <file name="shoppingcart.model.js" path="/Users/santiagomollajoli/Sites/frontend-hero-test-v1.2.4/src/components/shoppingcart/shoppingcart.model.js">
         <metrics statements="46" coveredstatements="42" conditionals="8" coveredconditionals="8" methods="17" coveredmethods="14"/>

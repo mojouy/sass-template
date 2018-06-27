@@ -90,6 +90,12 @@
     border-top: 1px solid $c-secondary-darker;
     margin-top: 10px;
     padding-top: 10px;
+
+    output {
+      color: $c-primary;
+      font-size: $font-size-final-output;
+      font-weight: $global-weight-bold;
+    }
   }//tital price
 
   &__footer {
