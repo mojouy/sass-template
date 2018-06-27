@@ -7,14 +7,14 @@
     "private": true,
     "scripts": {
         "postinstall": "npm run build",
-        "build": "npm-run-all lint clean mkdirs copy:* css js:dev",
+        "build": "npm-run-all lint clean mkdirs copy:* css js:dev test",
         "clean": "rimraf dist",
-        "mkdirs": "mkdir -p dist && mkdir -p dist/assets",
-        "js:dev": "babel src/main.js | uglifyjs > dist/main.js",
-        "copy:assets": "find src/assets -name '*' -type f -exec cp {} dist/assets \\;",
+        "mkdirs": "mkdir -p dist && mkdir -p dist/themes/netcentric/images",
+        "js:dev": "browserify src/main.js > dist/main.js",
+        "copy:assets": "find src/themes/netcentric/images -name '*' -type f -exec cp {} dist/themes/netcentric/images \\;",
         "copy:html": "find src -name '*.html' -type f -exec cp {} dist \\;",
         "kill": "lsof -n -i:8080 | grep LISTEN | awk '{print $2}' | xargs kill -9",
-        "serve": "browser-sync start -s --files 'dist/**/*.(js|css|html)' --ss 'dist' --port 8080 --reload-debounce 500",
+        "serve": "browser-sync start -s --files 'dist/**/*.(js|css|html)' --ss 'dist' --port 8080 --reload-debounce 1000",
         "css": "npm-run-all css:precompile css:autoprefix",
         "css:autoprefix": "postcss --use autoprefixer --replace dist/styles.css",
         "css:precompile": "node-sass --include-path src/libs-polyfills --output-style compressed --output dist src/styles.scss",
@@ -27,17 +27,40 @@
         "watch:css": "npm run css && onchange \"src/**/*.scss\" -- npm-run-all css",
         "watch:lint": "npm run lint && onchange \"src/**/*.{scss|html|js}\" -- npm run lint",
         "watch:html": "onchange 'src/**/*.html' -- npm run copy:html",
-        "watch:js": "onchange 'src/main.js' -- npm run js:dev",
+        "watch:js": "watchify src/main.js -t babelify -o 'uglifyjs -cm > dist/main.js'",
         "watch:test": "npm run test -- --watch",
         "watch": "npm run build && run-p watch:* serve"
+    },
+    "babel": {
+        "presets": [
+            "env",
+            "stage-2"
+        ]
+    },
+    "browserify": {
+        "transform": [
+            [
+                "babelify",
+                {
+                    "presets": [
+                        "babel-preset-env",
+                        "babel-preset-stage-2"
+                    ]
+                }
+            ]
+        ]
     },
     "devDependencies": {
         "autoprefixer": "^8.0.0",
         "babel-cli": "^6.26.0",
+        "babel-core": "^6.26.3",
+        "babelify": "^8.0.0",
         "browser-sync": "^2.24.4",
         "eslint": "^4.18.1",
         "html-validator-cli": "3.2.0",
-        "jest": "^22.4.2",
+        "include-media": "^1.4.9",
+        "jest": "^22.4.4",
+        "lodash": "^4.17.10",
         "node-sass": "^4.9.0",
         "npm-run-all": "4.1.2",
         "onchange": "3.3.0",
@@ -47,7 +70,11 @@
         "stylelint-config-standard": "^18.1.0",
         "stylelint-order": "^0.8.1"
     },
-    "engines": {
-        "node": "^6.9"
+    "dependencies": {
+        "babel-preset-env": "^1.7.0",
+        "babel-preset-stage-2": "^6.24.1",
+        "browserify": "^16.2.2",
+        "jquery": "^3.3.1",
+        "watchify": "^3.11.0"
     }
 }

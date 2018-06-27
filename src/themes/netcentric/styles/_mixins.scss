@@ -1,8 +1,8 @@
 
 // -----------  MIXINS ---------- //
 
-@mixin theme-background {
-  background: linear-gradient(-22deg, $c-primary-lighter 30%, $c-primary 100%);
+@mixin theme-background($image-path) {
+  background: url($image-path) no-repeat top left / cover, $brand-gradient no-repeat center;
 }
 
 @mixin link-with-logo {
@@ -34,6 +34,7 @@
 
   color: $c-primary;
   font-size: $global-font-size;
+  font-weight: $global-weight-bold;
 
   &:hover { cursor: pointer; }
 }
@@ -45,6 +46,7 @@
   border-radius: 6px;
   color: $c-secondary;
   font-size: $global-font-size;
+  line-height: 1;
   padding: $vertical-rythm-spacing-text;
 
   &:hover { cursor: pointer; }
@@ -113,13 +115,9 @@
   @return $rem-values;
 }
 
-@mixin respond-to($breakpoint) {
-  @if map-has-key($breakpoints, $breakpoint) {
-    @media (min-width: #{map-get($breakpoints, $breakpoint)}) { @content; }
-  }
-
-  @else {
-    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
-      + "Please make sure it is defined in `$breakpoints` map.";
-  }
+@mixin absolute-center {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }

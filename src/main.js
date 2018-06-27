@@ -1,1 +1,2 @@
-console.log('working'); // eslint-disable-line no-console
+import { initShoppingCart } from './components/shoppingcart/shoppingcart';
+initShoppingCart();

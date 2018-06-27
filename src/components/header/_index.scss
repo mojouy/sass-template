@@ -1,0 +1,31 @@
+
+// -----------  HEADER ---------- //
+
+.header {
+  @include theme-background($path-image-title-large);
+
+  height: 350px;
+  margin-bottom: $vertical-rythm-spacing-component;
+  position: relative;
+
+  @include media('<large') {
+    @include theme-background($path-image-title-small);
+
+    height: 280px;
+  }//small devices
+
+  @include media('<large', 'retina2x') { @include theme-background($path-image-title-small-2x); }
+  @include media('>large', 'retina2x') { @include theme-background($path-image-title-large-2x); }
+
+  &__logo { @include link-with-logo; }
+
+  &__title {
+    @extend .container;
+    @include absolute-center;
+
+    color: $c-secondary;
+    text-align: center;
+
+    @include media('<large') { font-weight: $global-weight-bold; }
+  }//title
+}//header

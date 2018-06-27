@@ -1,0 +1,15 @@
+// -----------  BREADCRUMBS ---------- //
+
+.breadcrumbs {
+  margin-bottom: $vertical-rythm-spacing-component;
+  width: 100%;
+
+  &__item {
+    display: inline-block;
+
+    &:not(:last-of-type)::after {
+      content: '»';
+      margin-left: 5px;
+    }
+  }//item
+}//breadcrumbs
